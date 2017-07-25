@@ -1,6 +1,7 @@
 #!/bin/bash
 
-function download {
+if [ -n "$1" ]
+then
     line=$1
 	if [ -z "`grep $line json_fetched`" ]
 	then
@@ -10,7 +11,8 @@ function download {
 	else
 		echo "$line Already Fetched"
 	fi
-}
+else
+	#reqiored GNU parallel that has --bar (20161222)
+	cat list | parallel --bar $0
+fi
 
-export -f download
-cat list | parallel --bar -j 10 download
