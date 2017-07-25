@@ -1,7 +1,7 @@
 #!/bin/bash
 
-while read line
-do
+function download {
+    line=$1
 	if [ -z "`grep $line json_fetched`" ]
 	then
 		echo "Fetching $line"
@@ -10,4 +10,7 @@ do
 	else
 		echo "$line Already Fetched"
 	fi
-done < list
+}
+
+export -f download
+cat list | parallel --bar -j 10 download
