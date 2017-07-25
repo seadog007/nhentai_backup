@@ -1,0 +1,2 @@
+collection-2--905404873230322593.wt filter=lfs diff=lfs merge=lfs -text
+journal/** filter=lfs diff=lfs merge=lfs -text
